@@ -20,8 +20,8 @@ public class RegistrationTests implements Helper {
     public void registrationPositive() throws IOException {
 
         AuthRequestDTO requestDTO = AuthRequestDTO.builder()
-                .username("abc_" + i + "@def.com")
-                .password("$Abcdef12345")
+                .username("coral_" + i + "@gmail.com")
+                .password("565656Ca$")
                 .build();
 
         RequestBody requestBody = RequestBody.create(gson.toJson(requestDTO), JSON);
@@ -41,8 +41,8 @@ public class RegistrationTests implements Helper {
     public void registrationNegativeWrongEmail() throws IOException {
 
         AuthRequestDTO requestDTO = AuthRequestDTO.builder()
-                .username("abc_" + i + "def.com")
-                .password("$Abcdef12345")
+                .username("c@oral_" + i + "@gmail.com")
+                .password("565656Ca$")
                 .build();
 
         RequestBody requestBody = RequestBody.create(gson.toJson(requestDTO), JSON);

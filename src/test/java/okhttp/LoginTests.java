@@ -19,8 +19,8 @@ public class LoginTests implements Helper {
     public void loginPositive() throws IOException {
 
         AuthRequestDTO requestDTO = AuthRequestDTO.builder()
-                .username("abc@def.com")
-                .password("$Abcdef12345")
+                .username("coral@gmail.com")
+                .password("565656Ca$")
                 .build();
 
         RequestBody requestBody = RequestBody.create(gson.toJson(requestDTO), JSON);

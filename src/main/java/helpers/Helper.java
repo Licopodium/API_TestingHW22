@@ -1,6 +1,7 @@
 package helpers;
 
 import com.google.gson.Gson;
+import com.jayway.restassured.RestAssured;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 
@@ -17,6 +18,7 @@ public interface Helper {
 
     String baseURL = "https://contactapp-telran-backend.herokuapp.com";
 
+    String authHeader = "Authorization";
     int i = new Random().nextInt(1000) + 1000;
 
 

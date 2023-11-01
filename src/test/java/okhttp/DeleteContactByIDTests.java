@@ -1,22 +1,23 @@
 package okhttp;
 
 import dto.ContactDTO;
-import dto.ContactListDTO;
 import dto.ContactResponseDTO;
 import helpers.Helper;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class AddNewContactTests implements Helper {
+public class DeleteContactByIDTests implements Helper {
 
     String endpoint = "/v1/contacts";
+    String id;
 
-    @Test
-    public void addNewContactPositive() throws IOException {
+    @BeforeMethod
+    public void precondition() throws IOException {
 
         ContactDTO contactDTO = ContactDTO.builder()
                 .name("Group39")
@@ -41,11 +42,26 @@ public class AddNewContactTests implements Helper {
         ContactResponseDTO contactResponseDTO = gson.fromJson(response.body().string(), ContactResponseDTO.class);
 
         String message = contactResponseDTO.getMessage();
-        System.out.println(message);
 
-        String id = message.substring(message.lastIndexOf(" ") + 1);
+        id = message.substring(message.lastIndexOf(" ") + 1);
 
-System.out.println(id);
     }
 
+    @Test
+    public void deleteContactByIDPositive() throws IOException {
+
+        Request request = new Request.Builder()
+                .url(baseURL + endpoint + "/" + id)
+                .addHeader("Authorization", token)
+                .delete()
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        ContactResponseDTO contactResponseDTO = gson.fromJson(response.body().string(), ContactResponseDTO.class);
+
+        String message = contactResponseDTO.getMessage();
+
+        System.out.println(message);
+    }
 }
